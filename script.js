@@ -20,7 +20,6 @@ class Book {
         this.index = index;
     }
 
-    //the getters and setters here are useless
     get title() {
         return this._title;
     }
