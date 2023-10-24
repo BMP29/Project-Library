@@ -11,17 +11,59 @@ const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const remove = document.getElementById('remove');
 
+class Book {
+    constructor(title, author, pages, read, index) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.index = index;
+    }
 
-function Book(title, author, pages, read, index) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read == true;
-    this.index = index;
+    //the getters and setters here are useless
+    get title() {
+        return this._title;
+    }
+
+    set title(title) {
+        this._title = title;
+    }
+
+    get author() {
+        return this._author;
+    }
+
+    set author(author) {
+        this._author = author;
+    }
+
+    get pages() {
+        return this._pages;
+    }
+
+    set pages(pages) {
+        this._pages = pages;
+    }
+
+    get read() {
+        return this._read;
+    }
+
+    set read(read) {
+        this._read = read;
+    }
+
+    get index() {
+        return this._index;
+    }
+
+    set index(index) {
+        this._index = index;
+    }
 }
 
 function addBookToLibrary() {
-    myLibrary.push(new Book(title.value, author.value, pages.value, read.value, myLibrary.length-1));
+    myLibrary.push(new Book(title.value, author.value, pages.value, read.checked, myLibrary.length-1));
     console.log(myLibrary.length-1);
     addBookToList();
 }
@@ -55,12 +97,13 @@ function addBookToList() {
     h2Title.textContent = title.value;
     pAuthor.textContent = author.value;
     pPages.textContent = pages.value;
-    btnRead.textContent = (read.checked == true ? "Read" : "Not Yet");
+    btnRead.textContent = (read.checked === true ? "Read" : "Not Yet");
     btnRemove.textContent = "Remove";
 
     btnRead.classList.add('btnCard');
     btnRemove.classList.add('btnCard');
-    if(read.checked == true) {
+
+    if(read.checked === true) {
         btnRead.style.backgroundColor = '#88ff88';
     }else {
         btnRead.style.backgroundColor = '#ff8888';
